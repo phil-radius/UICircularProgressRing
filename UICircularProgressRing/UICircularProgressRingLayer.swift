@@ -127,7 +127,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
         
         drawOuterCompletedPath()
         // Draw the rings
-        drawOuterRing()
+        drawOuterRing(in: ctx)
         drawInnerRing(in: ctx)
         // Draw the label
         drawValueLabel()
@@ -243,6 +243,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
         let center: CGPoint = CGPoint(x: bounds.midX, y: bounds.midY)
         
         let outerEndAngle: CGFloat
+        
         if fullCircle {
             outerEndAngle = (outervalue - minValue) / (maxValue - minValue) * 360.0 + startAngle
         } else {
@@ -254,8 +255,6 @@ class UICircularProgressRingLayer: CAShapeLayer {
         
         let outerRadius: CGFloat = max(width, height)/2 - max(outerRingWidth, innerRingWidth)/2
         let start: CGFloat = fullCircle ? 0 : startAngle.toRads
-        let end: CGFloat = fullCircle ? CGFloat.pi * 2 : endAngle.toRads
-        
         let outerPath = UIBezierPath(arcCenter: center,
                                      radius: outerRadius,
                                      startAngle: start,
@@ -283,6 +282,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
         
         
         // Draw path
+        /*
         ctx.setLineWidth(outerRingWidth)
         ctx.setLineJoin(.round)
         ctx.setLineCap(outerCapStyle)
@@ -315,12 +315,12 @@ class UICircularProgressRingLayer: CAShapeLayer {
             
             ctx.restoreGState()
         }
+        */
         
         
-        /*
         outerRingColor.setStroke()
         outerPath.stroke()
-         */
+        
     }
     
     /**
