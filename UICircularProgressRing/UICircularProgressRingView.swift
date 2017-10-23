@@ -620,7 +620,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    @IBInspectable open var valueIndicator: String = "%" {
+    @IBInspectable open var valueIndicator: String = "" {
         didSet {
             self.ringLayer.valueIndicator = self.valueIndicator
         }
