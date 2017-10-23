@@ -21,6 +21,7 @@ class ViewController: UIViewController, UICircularProgressRingDelegate  {
         ring1.animationStyle = kCAMediaTimingFunctionLinear
         ring1.font = UIFont.systemFont(ofSize: 70)
         ring1.setProgress(innerValue: 0, outerValue: 0, animationDuration: 0, completion: nil)
+        
     }
     
     // Button clicked, animate them views
