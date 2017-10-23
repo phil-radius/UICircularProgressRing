@@ -818,13 +818,14 @@ import UIKit
      ## Author
      Luis Padron
      */
-    open func setProgress(value: CGFloat, animationDuration: TimeInterval,
+    open func setProgress(innerValue value: CGFloat, outerValue outer : CGFloat, animationDuration: TimeInterval,
                           completion: ProgressCompletion? = nil) {
         // Remove the current animation, so that new can be processed
         if isAnimating { self.layer.removeAnimation(forKey: "value") }
         // Only animate if duration sent is greater than zero
         self.ringLayer.animated = animationDuration > 0
         self.ringLayer.animationDuration = animationDuration
+        self.ringLayer.outervalue = outer
         // Create a transaction to be notified when animation is complete
         CATransaction.begin()
         CATransaction.setCompletionBlock {
