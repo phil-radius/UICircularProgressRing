@@ -433,7 +433,7 @@ import UIKit
      ## Author:
      Luis Padron
      */
-    @IBInspectable open var valueIndicator: String = "%" {
+    @IBInspectable open var valueIndicator: String = "" {
         didSet {
             self.ringLayer.valueIndicator = self.valueIndicator
         }
@@ -607,7 +607,7 @@ import UIKit
      ## Author:
      Luis Padron
      */
-    open func setProgress(value: CGFloat, animationDuration: TimeInterval, completion: ProgressCompletion? = nil) {
+    open func setProgress(innerValue: CGFloat, outerValue: CGFloat, animationDuration: TimeInterval, completion: ProgressCompletion? = nil) {
         // Remove the current animation, so that new can be processed
         if isAnimating { self.layer.removeAnimation(forKey: "value") }
         // Only animate if duration sent is greater than zero
@@ -620,8 +620,10 @@ import UIKit
             self.delegate?.finishedUpdatingProgress(forRing: self)
             completion?()
         }
-        self.value = value
-        self.ringLayer.value = value
+        self.value = innerValue
+        self.ringLayer.value = innerValue
+        self.ringLayer.outervalue = outerValue
+        
         CATransaction.commit()
     }
 }
